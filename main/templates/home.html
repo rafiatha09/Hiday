@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+<title>Hiday-F02</title>
+{% endblock meta %}
+
+{% block content %}
+  
+
+  {% if role == 'pengguna' %}
+  <h1>Hello, {{email}}!</h1>
+  <h3>Nama Area Pertanian: {{area}}</h3>
+  <h3>XP: {{xp}}</h3>
+  <h3>Koin: {{koin}}</h3>
+  <h3>Level: {{level}}</h3>
+  {% endif %}
+
+  {% if role == 'admin' %}
+  <h1>Hello, {{email}}!</h1>
+  {% endif %}
+  <p><a href="{% url 'home:logout' %}">Log Out</a></p>
+{% endblock content %}

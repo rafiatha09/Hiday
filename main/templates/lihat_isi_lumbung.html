@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+<title>Lihat isi lumbung</title>
+{% endblock meta %}
+
+{% block content %}
+
+
+{% if role == 'pengguna' %}
+    <h3>Level: -</h3>
+    <h3>Kapasitas: -</h3>
+
+        <table class ="table">
+            <thead>
+                <th>No</th>
+                <th>ID Produk</th>
+                <th>Nama Produk</th>
+                <th>Harga Jual</th>
+                <th>Sifat Produk</th>
+                <th>Jumlah Produk</th>
+            </thead>
+            <tbody>
+                {%for j,i in produk_hasil_panen %}
+                <tr>
+                    <td id="number">{{j}}</td>
+                    <td>{{i.id}}</td>
+                    <td>{{i.nama}}</td>
+                    <td>{{i.harga_jual}}</td>
+                    <td>{{i.sifat_produk}}</td>
+                    <td>{{i.jumlah}}</td>
+                </tr>
+                {% endfor %}
+        
+                
+            </tbody>
+        
+            </table>
+            <br><br>
+        
+
+            <table class ="table">
+                <thead>
+                    <th>No</th>
+                    <th>ID Produk</th>
+                    <th>Nama Produk</th>
+                    <th>Harga Jual</th>
+                    <th>Sifat Produk</th>
+                    <th>Jumlah Produk</th>
+                </thead>
+                <tbody>
+                    {%for j,i in produk_hewan %}
+                    <tr>
+                        <td id="number">{{j}}</td>
+                        <td>{{i.id}}</td>
+                        <td>{{i.nama}}</td>
+                        <td>{{i.harga_jual}}</td>
+                        <td>{{i.sifat_produk}}</td>
+                        <td>{{i.jumlah}}</td>
+                    </tr>
+                    {% endfor %}
+            
+                    
+                </tbody>
+            
+                </table>
+            <br><br>
+                <table class ="table">
+                    <thead>
+                        <th>No</th>
+                        <th>ID Produk</th>
+                        <th>Nama Produk</th>
+                        <th>Harga Jual</th>
+                        <th>Sifat Produk</th>
+                        <th>Jumlah Produk</th>
+                    </thead>
+                    <tbody>
+                        {%for j,i in produk_makanan %}
+                        <tr>
+                            <td id="number">{{j}}</td>
+                            <td>{{i.id}}</td>
+                            <td>{{i.nama}}</td>
+                            <td>{{i.harga_jual}}</td>
+                            <td>{{i.sifat_produk}}</td>
+                            <td>{{i.jumlah}}</td>
+                        </tr>
+                        {% endfor %}
+                
+                        
+                    </tbody>
+                
+                    </table>
+
+{% else %}
+
+    <table class ="table">
+        <thead>
+            <th>No</th>
+            <th>Email Pemilik Lumbung</th>
+            <th>ID Produk</th>
+            <th>Nama Produk</th>
+            <th>Harga Jual</th>
+            <th>Sifat Produk</th>
+            <th>Jumlah Produk</th>
+        </thead>
+        <tbody>
+            {%for j,i in produk_hasil_panen %}
+            <tr>
+                <td id="number">{{j}}</td>
+                <td>{{i.email}}</td>
+                <td>{{i.id}}</td>
+                <td>{{i.nama}}</td>
+                <td>{{i.harga_jual}}</td>
+                <td>{{i.sifat_produk}}</td>
+                <td>{{i.jumlah}}</td>
+            </tr>
+            {% endfor %}
+    
+        </tbody>
+        </table>
+
+        <br><br>
+    
+        <table class ="table">
+            <thead>
+                <th>No</th>
+                <th>Email Pemilik Lumbung</th>
+                <th>ID Produk</th>
+                <th>Nama Produk</th>
+                <th>Harga Jual</th>
+                <th>Sifat Produk</th>
+                <th>Jumlah Produk</th>
+            </thead>
+            <tbody>
+                {%for j,i in produk_hewan %}
+                <tr>
+                    <td id="number">{{j}}</td>
+                    <td>{{i.email}}</td>
+                    <td>{{i.id}}</td>
+                    <td>{{i.nama}}</td>
+                    <td>{{i.harga_jual}}</td>
+                    <td>{{i.sifat_produk}}</td>
+                    <td>{{i.jumlah}}</td>
+                </tr>
+                {% endfor %}
+        
+            </tbody>
+            </table>
+            <br><br>
+       
+            <table class ="table">
+                <thead>
+                    <th>No</th>
+                    <th>Email Pemilik Lumbung</th>
+                    <th>ID Produk</th>
+                    <th>Nama Produk</th>
+                    <th>Harga Jual</th>
+                    <th>Sifat Produk</th>
+                    <th>Jumlah Produk</th>
+                </thead>
+                <tbody>
+                    {%for j,i in produk_makanan %}
+                    <tr>
+                        <td id="number">{{j}}</td>
+                        <td>{{i.email}}</td>
+                        <td>{{i.id}}</td>
+                        <td>{{i.nama}}</td>
+                        <td>{{i.harga_jual}}</td>
+                        <td>{{i.sifat_produk}}</td>
+                        <td>{{i.jumlah}}</td>
+                    </tr>
+                    {% endfor %}
+            
+                    
+                </tbody>
+            
+                </table>
+{% endif %}
+{% endblock content %}

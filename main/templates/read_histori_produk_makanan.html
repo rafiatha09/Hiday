@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+<title>Basdat TK3 - F02</title>
+
+{% endblock meta %}
+
+{% block content %}
+
+{% if role == 'pengguna' %}
+
+<div class="table-wraper">
+<table class ="table">
+    <thead>
+        <th>No</th>
+        <th>Waktu Awal</th>
+        <th>Waktu Selesai</th>
+        <th>Jumlah</th>
+        <th>XP</th>
+        <th>Produk Makanan</th>
+        <th>Alat Produksi</th>
+    </thead>
+    <tbody>
+        {%for j,i in results_pengguna %}
+        <tr>
+            <td id="number">{{j}}</td>
+            <td>{{i.waktu_awal}}</td>
+            <td>{{i.waktu_selesai}}</td>
+            <td>{{i.jumlah}}</td>
+            <td>{{i.xp}}</td>
+            <td>{{i.produk_makanan}}</td>
+            <td>{{i.aset}}</td>
+        </tr>
+        {% endfor %}
+
+        
+    </tbody>
+
+    </table>
+</div>
+{% endif %}
+
+{% if role == 'admin' %}
+
+<div class="table-wraper">
+    <table class ="table">
+        <thead>
+            <th>No</th>
+            <th>Email Pengguna</th>
+            <th>Waktu Awal</th>
+            <th>Waktu Selesai</th>
+            <th>Jumlah</th>
+            <th>XP</th>
+            <th>Produk Makanan</th>
+            <th>Alat Produksi</th>
+        </thead>
+        <tbody>
+            {%for j,i in results_admin %}
+            <tr>
+                <td id="number">{{j}}</td>
+                <td>{{i.email}}</td>
+                <td>{{i.waktu_awal}}</td>
+                <td>{{i.waktu_selesai}}</td>
+                <td>{{i.jumlah}}</td>
+                <td>{{i.xp}}</td>
+                <td>{{i.nama}}</td>
+                <td>{{i.nama_produk}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+    </div>
+{% endif %}
+{% endblock content %}

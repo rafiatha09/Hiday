@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+<title>Basdat TK3 - F02</title>
+
+{% endblock meta %}
+
+{% block content %}
+
+{% if role == 'pengguna' %}
+
+<div class="table-wraper">
+<table class ="table">
+    <thead>
+        <th>No</th>
+        <th>Produk Makanan</th>
+        <th>Alat Produksi</th>
+        <th>Durasi Produksi</th>
+        <th>Jumlah Produk Hasil Produksi</th>
+        <th>Action</th>
+    </thead>
+    <tbody>
+        {%for j,i in results_pengguna %}
+        <tr>
+            <td id="number">{{j}}</td>
+            <td>{{i.nama}}</td>
+            <td>{{i.nama_aset}}</td>
+            <td>{{i.durasi}}</td>
+            <td>{{i.jumlah_unit_hasil}}</td>
+            <td>
+                <a href="produksi/{{i.nama}}">[Detail]</a>
+            </td>
+        </tr>
+        {% endfor %}
+
+        
+    </tbody>
+
+    </table>
+</div>
+{% endif %}
+
+{% if role == 'admin' %}
+
+<div class="table-wraper">
+    <table class ="table">
+        <thead>
+            <th>No</th>
+            <th>Produk Makanan</th>
+            <th>Alat Produksi</th>
+            <th>Durasi Produksi</th>
+            <th>Jumlah Produk Hasil Produksi</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            {%for j,i in results_admin %}
+            <tr>
+                <td id="number">{{j}}</td>
+                <td>{{i.nama}}</td>
+                <td>{{i.nama_aset}}</td>
+                <td>{{i.durasi}}</td>
+                <td>{{i.jumlah_unit_hasil}}</td>
+                <td>
+                    <a href= "produksi/{{i.id}}">[Detail]</a>
+                    <a href="update_produksi/{{i.id}}">[Update]</a>
+                    {% if i.bisa_didelete == 'sabiyuawal_sabiyulakhir' %}
+                    <a href="delete_produksi/{{i.id}}_{{i.id_aset}}">[Delete]</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+    
+            
+        </tbody>
+    
+        </table>
+    </div>
+{% endif %}
+{% endblock content %}

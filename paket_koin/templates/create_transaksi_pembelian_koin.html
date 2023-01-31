@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+<title>Tambah Paket Koin</title>
+{% endblock meta %}
+
+{% block content %}
+<br><br>
+<h2  style="text-align:center"><b>Tambah Paket Koin</b></h2>
+<br>
+
+<form style="margin: auto; width: 220px;" method="post">
+  {% csrf_token %}
+  <label for="value">Paket koin:</label>
+  <input type="text" name="value" value={{value}} style = "border-radius: 8px;" disabled>
+  <br><br>
+  <label for="harga">Harga:</label>
+  <input type="number" name="harga" value={{harga}} style = "border-radius: 8px;" disabled>
+  <br><br>
+  <label for="jumlah">Jumlah:</label>
+  <input type="number" name="jumlah" style = "border-radius: 8px;" required>
+  <br><br>
+  <label for="cara_pembayaran">Cara pembayaran:</label>
+  <input type="text" name="cara_pembayaran" style = "width: 240px; border-radius: 8px;" required>
+  <br><br>
+  <button type="submit" style="padding: 4px 12px; border-radius: 12px; background-color: #25263b; color: white; width: 100px">Beli</button>
+</form>
+
+{% endblock content %}

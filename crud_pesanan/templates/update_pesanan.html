@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+  <title>Update Pesanan</title>
+{% endblock meta %}
+
+{% block content %}
+<form action = "" method = "post">
+    {% csrf_token %}
+    <div class="container" align='center'>
+        {% for res in result1 %}
+            </br>
+            <label for="">ID Pesanan</label>
+            </br>
+            <input type="text" class="form-control" placeholder="Masukkan id pesanan" name="id" id="id" required value="{{res.id}}" disabled>
+            </br>
+            </br>
+            <label for="">Nama Pesanan</label>
+            </br>
+            <input type="text" class="form-control" placeholder="Masukkan nama pesanan" name="nama" id="nama" required value="{{res.nama}}">
+            </br>
+            </br>
+            <label for="">Jenis Pesanan</label>
+            </br>
+            <input type="text" class="form-control" placeholder="Masukkan jenis pesanan" name="jenis" id="jenis" required value="{{res.jenis}}">
+            </br>
+            </br>
+            <label for="">Status Pesanan</label>
+            </br>
+            <input type="text" class="form-control" placeholder="Masukkan status pesanan" name="status" id="status" required value="{{res.status}}">
+            </br>
+            </br>
+            <label for="">Total Koin</label>
+            </br>
+            <input type="text" class="form-control" placeholder="Masukkan total koin" name="total" id="total" required value="{{res.total}}" disabled>
+            </br>
+            </br>
+        {% endfor %}
+    
+        <table class="table">
+            <thead>
+                <th>Nama Produksi</th>
+                <th>Jumlah Produksi</th>
+            </thead>
+            <tbody>
+                {% for res in result2 %}
+                <tr>
+                    <td>{{ res.nama }}</td>
+                    <td>{{ res.jumlah }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </br>
+        <div align='center'>
+            <button type='submit'>Simpan</button>      
+        </div>
+    </div> 
+</form>
+{% endblock content %}

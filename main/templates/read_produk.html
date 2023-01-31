@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+<title>Basdat TK3 - F02!</title>
+
+{% endblock meta %}
+
+{% block content %}
+
+{% if role == 'pengguna' %}
+
+<div class="table-wraper">
+<table class ="table">
+    <thead>
+        <th>No</th>
+        <th>Jenis</th>
+        <th>Nama</th>
+        <th>Harga Jual</th>
+        <th>Sifat</th>
+    </thead>
+    <tbody>
+        {%for j,i in results_pengguna %}
+        <tr>
+            <td id="number">{{j}}</td>
+            <td>{{i.jenis}}</td>
+            <td>{{i.nama}}</td>
+            <td>{{i.harga_jual}}</td>
+            <td>{{i.sifat_produk}}</td>
+        </tr>
+        {% endfor %}
+
+        
+    </tbody>
+
+    </table>
+</div>
+{% endif %}
+
+{% if role == 'admin' %}
+
+<div class="table-wraper">
+    <table class ="table">
+        <thead>
+            <th>No</th>
+            <th>Jenis</th>
+            <th>Nama</th>
+            <th>Harga Jual</th>
+            <th>Sifat</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            {%for j,i in results_admin %}
+            <tr>
+                <td id="number">{{j}}</td>
+                <td>{{i.jenis}}</td>
+                <td>{{i.nama}}</td>
+                <td>{{i.harga_jual}}</td>
+                <td>{{i.sifat_produk}}</td>
+                <td>
+                    <a href= "create_produk/{{i.id}}">[Update]</a>
+                    <br>
+                    {% if i.bisa_didelete == 'sabiyuawal_sabiyulakhir' %}
+                    <a href="delete_produk/{{i.id}}">[Delete]</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+    
+            
+        </tbody>
+    
+        </table>
+    </div>
+{% endif %}
+{% endblock content %}
